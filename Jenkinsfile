@@ -17,7 +17,13 @@ pipeline {
                 }
             }
         }
-
+        stage('Build Docker-Image'){
+            steps {
+                script {
+                    sh "docker build -t imagerotate ."
+                }
+            } 
+        }
         stage('Run Unit-Tests'){
             steps {
                 dir('build') {
