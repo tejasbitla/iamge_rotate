@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker-Image'){
             steps {
                 script {
-                    sh "docker build -t imagerotate ."
+                    sh "docker build -t bitislit/imagerotate ."
                 }
             } 
         }
