@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        ls -lart 
+                        
                         mkdir build && cd build
                         cmake ..
                         make 
@@ -17,13 +17,15 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker-Image'){
+        //docker file step to create a image
+       /* stage('Build Docker-Image'){
             steps {
                 script {
-                    sh "docker build -t bitislit/imagerotate ."
+                    sh "docker build -t reponame/imagerotate ."
                 }
             } 
-        }
+        }*/
+        //runing unit tests
         stage('Run Unit-Tests'){
             steps {
                 dir('build') {
@@ -32,6 +34,7 @@ pipeline {
             } 
         }
 
+          //executing step for image rotate.png 
         stage('Run the exec'){
             steps {
                 dir('build') {
@@ -40,6 +43,7 @@ pipeline {
             } 
         }
     }
+    //storing of image in dummy artifactory
     post { 
         always { 
             archiveArtifacts artifacts: 'build/image_rotate', fingerprint: true
