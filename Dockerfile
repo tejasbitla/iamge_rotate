@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y \
     coreutils \
     gcc \
     g++ \
-    libopencv-dev
+    libopencv-dev \
 WORKDIR /app
 COPY build/image_rotate .
 COPY *.jpg .
