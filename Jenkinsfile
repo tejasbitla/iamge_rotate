@@ -36,6 +36,7 @@ pipeline {
     }
     post { 
         always { 
+            archiveArtifacts artifacts: 'build/image_rotate', fingerprint: true
             cleanWs()
         }
     }
